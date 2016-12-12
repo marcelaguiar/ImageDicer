@@ -1,0 +1,10 @@
+C:\Users\Marcel\Documents\Visual Studio 2013\Projects\ImageDicer\ImageDicer\bin\Debug\ImageDicer.exe.config
+C:\Users\Marcel\Documents\Visual Studio 2013\Projects\ImageDicer\ImageDicer\bin\Debug\ImageDicer.exe
+C:\Users\Marcel\Documents\Visual Studio 2013\Projects\ImageDicer\ImageDicer\bin\Debug\ImageDicer.pdb
+C:\Users\Marcel\Documents\Visual Studio 2013\Projects\ImageDicer\ImageDicer\obj\Debug\ImageDicer.csprojResolveAssemblyReference.cache
+C:\Users\Marcel\Documents\Visual Studio 2013\Projects\ImageDicer\ImageDicer\obj\Debug\ImageDicer.Properties.Resources.resources
+C:\Users\Marcel\Documents\Visual Studio 2013\Projects\ImageDicer\ImageDicer\obj\Debug\ImageDicer.csproj.GenerateResource.Cache
+C:\Users\Marcel\Documents\Visual Studio 2013\Projects\ImageDicer\ImageDicer\obj\Debug\ImageDicer.exe
+C:\Users\Marcel\Documents\Visual Studio 2013\Projects\ImageDicer\ImageDicer\obj\Debug\ImageDicer.pdb
+C:\Users\Marcel\Documents\Visual Studio 2013\Projects\ImageDicer\ImageDicer\obj\Debug\ImageDicer.frmMain.resources
+C:\Users\Marcel\Documents\Visual Studio 2013\Projects\ImageDicer\ImageDicer\obj\Debug\ImageDicer.frmGridSelect.resources
