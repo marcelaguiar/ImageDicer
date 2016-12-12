@@ -12,14 +12,18 @@ namespace ImageDicer
 {
     public partial class frmGridSelect : Form
     {
+        Image targetImage;
+
         public frmGridSelect(Image selectedImage, int numColumns, int numRows)
         {
             InitializeComponent();
+            targetImage = selectedImage;
         }
 
         private void frmGridSelect_Load(object sender, EventArgs e)
         {
-
+            pictureBox1.Image = targetImage;
         }
+
     }
 }
