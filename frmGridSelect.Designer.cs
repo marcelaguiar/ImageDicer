@@ -59,13 +59,13 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(284, 262);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(452, 569);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // confirmSelectionButton
             // 
             this.confirmSelectionButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.confirmSelectionButton.Location = new System.Drawing.Point(176, 236);
+            this.confirmSelectionButton.Location = new System.Drawing.Point(344, 543);
             this.confirmSelectionButton.Name = "confirmSelectionButton";
             this.confirmSelectionButton.Size = new System.Drawing.Size(105, 23);
             this.confirmSelectionButton.TabIndex = 1;
@@ -78,7 +78,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(0, 15);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(284, 218);
+            this.pictureBox1.Size = new System.Drawing.Size(452, 525);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
@@ -91,7 +91,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(452, 569);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmGridSelect";
             this.Text = "gridSelectForm";
