@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Windows.Forms;
 
 namespace ImageDicer
@@ -19,9 +20,13 @@ namespace ImageDicer
         Point lineEndPoint;
         Rectangle rect = new Rectangle();
         List<Rectangle> listRect = new List<Rectangle>();
-        
+
         Brush selectionBrush = new SolidBrush(Color.FromArgb(128, 72, 145, 220));
         Pen myPen = new Pen(Color.Blue);
+
+        string selDirectory;
+        bool selectionMade = false;
+        bool directorySelected = false;
 
         public frmGridSelect(Image selectedImage, int numColumns, int numRows)
         {
@@ -77,16 +82,20 @@ namespace ImageDicer
             Size newSize = new Size(columnWidth, rowHeight);
 
             // put each cell of grid into a rectangle object
-            for (int row = 0; row < rowCount; row ++ )
+            for (int row = 0; row < rowCount; row++)
             {
                 for (int col = 0; col < columnCount; col++)
                 {
                     newLocation = new Point(
-                        rect.Location.X + (col*columnWidth),
-                        rect.Location.Y + (row*rowHeight));
+                        rect.Location.X + (col * columnWidth),
+                        rect.Location.Y + (row * rowHeight));
                     listRect.Add(new Rectangle(newLocation, newSize));
                 }
             }
+
+            selectionMade = true;
+            if (directorySelected)
+                confirmSelectionButton.Enabled = true;
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
@@ -132,19 +141,44 @@ namespace ImageDicer
             Bitmap myBitmap = new Bitmap(targetImage);
             Bitmap cloneBitmap;
             string fileName;
+            string pathAndFile;
             int count = 0;
 
             // Save each rectangle in listRect as an image
             foreach (Rectangle rect in listRect)
             {
-                fileName = "asdfwert_" + count + ".jpg";
+                fileName = "sub_image_" + count + ".jpg";
+                pathAndFile = Path.Combine(selDirectory, fileName);
 
                 PixelFormat format = myBitmap.PixelFormat;
                 cloneBitmap = myBitmap.Clone(rect, format);
-                cloneBitmap.Save(fileName, ImageFormat.Jpeg);
+                cloneBitmap.Save(pathAndFile, ImageFormat.Jpeg);
 
                 count++;
             }
+
+            this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using (FolderBrowserDialog fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    if (!string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                    {
+                        selDirectory = fbd.SelectedPath;
+                        pathLabel.Text = selDirectory;
+                        directorySelected = true;
+                    }
+                }
+            }
+
+            if (selectionMade)
+                confirmSelectionButton.Enabled = true;
         }
 
     }

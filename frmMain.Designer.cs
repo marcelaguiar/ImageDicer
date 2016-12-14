@@ -144,7 +144,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.selectImageButton);
             this.Name = "frmMain";
-            this.Text = "Form1";
+            this.Text = "ImageDicer";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colNumBox)).EndInit();
