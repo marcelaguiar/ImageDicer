@@ -41,17 +41,17 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(184, 13);
+            this.label1.Size = new System.Drawing.Size(196, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Click-and-drag to make grid selection:";
+            this.label1.Text = "1. Click-and-drag to make grid selection:";
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.confirmSelectionButton, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.confirmSelectionButton, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -71,6 +71,7 @@
             this.confirmSelectionButton.TabIndex = 1;
             this.confirmSelectionButton.Text = "Confirm Selection";
             this.confirmSelectionButton.UseVisualStyleBackColor = true;
+            this.confirmSelectionButton.Click += new System.EventHandler(this.confirmSelectionButton_Click);
             // 
             // pictureBox1
             // 

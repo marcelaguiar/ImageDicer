@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Windows.Forms;
 
 namespace ImageDicer
@@ -16,6 +18,7 @@ namespace ImageDicer
         Point lineStartPoint;
         Point lineEndPoint;
         Rectangle rect = new Rectangle();
+        List<Rectangle> listRect = new List<Rectangle>();
         
         Brush selectionBrush = new SolidBrush(Color.FromArgb(128, 72, 145, 220));
         Pen myPen = new Pen(Color.Blue);
@@ -59,6 +62,9 @@ namespace ImageDicer
                 Math.Abs(rectStartPoint.X - e.Location.X),
                 Math.Abs(rectStartPoint.Y - e.Location.Y));
 
+            columnWidth = rect.Width / columnCount;
+            rowHeight = rect.Height / rowCount;
+
             pictureBox1.Invalidate(); // Can I remove this?
         }
 
@@ -67,8 +73,20 @@ namespace ImageDicer
             if (e.Button != MouseButtons.Left)
                 return;
 
-            Console.WriteLine("FINAL: Start: " + rectStartPoint);
-            Console.WriteLine("FINAL: Size: " + rect.Size);
+            Point newLocation;
+            Size newSize = new Size(columnWidth, rowHeight);
+
+            // put each cell of grid into a rectangle object
+            for (int row = 0; row < rowCount; row ++ )
+            {
+                for (int col = 0; col < columnCount; col++)
+                {
+                    newLocation = new Point(
+                        rect.Location.X + (col*columnWidth),
+                        rect.Location.Y + (row*rowHeight));
+                    listRect.Add(new Rectangle(newLocation, newSize));
+                }
+            }
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
@@ -86,9 +104,6 @@ namespace ImageDicer
 
         private void drawGrid(PaintEventArgs e)
         {
-            columnWidth = rect.Width / columnCount;
-            rowHeight = rect.Height / rowCount;
-
             // Draw vertical lines
             for (int i = 0; i <= columnCount; i++)
             {
@@ -109,6 +124,26 @@ namespace ImageDicer
                 lineEndPoint.Y = lineStartPoint.Y;
 
                 e.Graphics.DrawLine(myPen, lineStartPoint, lineEndPoint);
+            }
+        }
+
+        private void confirmSelectionButton_Click(object sender, EventArgs e)
+        {
+            Bitmap myBitmap = new Bitmap(targetImage);
+            Bitmap cloneBitmap;
+            string fileName;
+            int count = 0;
+
+            // Save each rectangle in listRect as an image
+            foreach (Rectangle rect in listRect)
+            {
+                fileName = "asdfwert_" + count + ".jpg";
+
+                PixelFormat format = myBitmap.PixelFormat;
+                cloneBitmap = myBitmap.Clone(rect, format);
+                cloneBitmap.Save(fileName, ImageFormat.Jpeg);
+
+                count++;
             }
         }
 
