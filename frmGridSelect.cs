@@ -39,7 +39,6 @@ namespace ImageDicer
         private void frmGridSelect_Load(object sender, EventArgs e)
         {
             pictureBox1.Image = targetImage;
-            myPen.Width = 1;
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
@@ -78,17 +77,36 @@ namespace ImageDicer
             if (e.Button != MouseButtons.Left)
                 return;
 
-            Point newLocation;
-            Size newSize = new Size(columnWidth, rowHeight);
+            Size visImageSize;
 
-            // put each cell of grid into a rectangle object
+            var wfactor = (double)targetImage.Width / pictureBox1.ClientSize.Width;
+            var hfactor = (double)targetImage.Height / pictureBox1.ClientSize.Height;
+
+            var resizeFactor = Math.Max(wfactor, hfactor);
+            var imageSize = new Size((int)(targetImage.Width / resizeFactor), (int)(targetImage.Height / resizeFactor));
+
+
+            visImageSize = new Size(
+                (int)(targetImage.Width / resizeFactor),
+                (int)(targetImage.Height / resizeFactor));
+
+            var proportion = targetImage.Width / visImageSize.Width;
+
+            // Calculate margins
+            var marginX = pictureBox1.Width / 2 - (int)((targetImage.Width / resizeFactor) / 2);
+            var marginY = pictureBox1.Height / 2 - (int)((targetImage.Height / resizeFactor) / 2);
+
+            Point newLocation;
+            Size newSize = new Size(columnWidth*proportion, rowHeight*proportion);
+
+            // Put each cell of grid into a rectangle object
             for (int row = 0; row < rowCount; row++)
             {
                 for (int col = 0; col < columnCount; col++)
                 {
                     newLocation = new Point(
-                        rect.Location.X + (col * columnWidth),
-                        rect.Location.Y + (row * rowHeight));
+                        proportion*(rect.Location.X - marginX + (col * columnWidth)),
+                        proportion*(rect.Location.Y - marginY + (row * rowHeight)));
                     listRect.Add(new Rectangle(newLocation, newSize));
                 }
             }
@@ -113,6 +131,8 @@ namespace ImageDicer
 
         private void drawGrid(PaintEventArgs e)
         {
+            myPen.Width = 1;
+
             // Draw vertical lines
             for (int i = 0; i <= columnCount; i++)
             {

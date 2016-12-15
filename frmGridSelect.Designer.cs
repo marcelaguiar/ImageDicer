@@ -84,7 +84,7 @@
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
             this.tableLayoutPanel2.Controls.Add(this.confirmSelectionButton, 2, 0);
@@ -114,7 +114,7 @@
             // pathLabel
             // 
             this.pathLabel.AutoSize = true;
-            this.pathLabel.Location = new System.Drawing.Point(103, 0);
+            this.pathLabel.Location = new System.Drawing.Point(104, 0);
             this.pathLabel.Name = "pathLabel";
             this.pathLabel.Size = new System.Drawing.Size(0, 13);
             this.pathLabel.TabIndex = 1;
@@ -124,7 +124,7 @@
             this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button2.Location = new System.Drawing.Point(3, 3);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 23);
+            this.button2.Size = new System.Drawing.Size(95, 23);
             this.button2.TabIndex = 2;
             this.button2.Text = "2. Browse folder";
             this.button2.UseVisualStyleBackColor = true;
