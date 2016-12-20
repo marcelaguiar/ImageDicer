@@ -17,6 +17,7 @@ namespace ImageDicer
         {
             colNumBox.Value = 6;
             rowNumBox.Value = 8;
+            this.MinimumSize = new Size(340, 300);
         }
 
         private void selectImageButton_Click(object sender, EventArgs e)
